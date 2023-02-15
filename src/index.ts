@@ -9,7 +9,7 @@ plugin
   .version(version)
 
 plugin
-  .command('send')
+  .command('send <message>')
   .description('发送消息')
   .sugar(/^咨询\s?(?<message>.+)$/)
   .action(async (ctx) => {
