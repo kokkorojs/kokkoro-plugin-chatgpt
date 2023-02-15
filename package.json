@@ -1,0 +1,41 @@
+{
+  "name": "kokkoro-plugin-chatgpt",
+  "version": "1.0.0",
+  "description": "年轻人的第一款人工智能",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "engines": {
+    "node": ">= v18"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kokkorojs/kokkoro-plugin-chatgpt.git"
+  },
+  "keywords": [
+    "qq",
+    "bot",
+    "coolq",
+    "kokkoro",
+    "chatgpt",
+    "openai"
+  ],
+  "author": "yuki <mail@yuki.sh>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kokkorojs/kokkoro-plugin-chatgpt/issues"
+  },
+  "homepage": "https://github.com/kokkorojs/kokkoro-plugin-chatgpt#readme",
+  "files": [
+    "lib"
+  ],
+  "devDependencies": {
+    "@types/node": "^18.13.0",
+    "kokkoro": "2.0.0-alpha.8"
+  },
+  "dependencies": {
+    "chatgpt": "^4.4.0"
+  }
+}
