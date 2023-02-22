@@ -1,6 +1,6 @@
 {
   "name": "kokkoro-plugin-chatgpt",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "年轻人的第一款人工智能",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -32,8 +32,8 @@
     "lib"
   ],
   "devDependencies": {
-    "@types/node": "^18.13.0",
-    "kokkoro": "2.0.0-alpha.8"
+    "@kokkoro/core": "^2.0.1",
+    "@types/node": "^18.13.0"
   },
   "dependencies": {
     "chatgpt": "^4.4.0"

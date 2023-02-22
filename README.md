@@ -21,4 +21,4 @@ npm i kokkoro-plugin-chatgpt
 OPENAI_API_KEY="xxx"
 ```
 
-因为插件的定时任务是在初始化时创建的，所以如果你修改了 OPENAI_API_KEY 变量，需要使用 reload 指令将插件重新挂载才能生效。
+因为插件的 Service 是在初始化时创建的，所以如果你修改了 OPENAI_API_KEY 变量，需要使用 reload 指令将插件重新挂载才能生效。

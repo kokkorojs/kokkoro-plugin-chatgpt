@@ -1,4 +1,4 @@
-import { Logger } from 'kokkoro';
+import { Plugin } from '@kokkoro/core';
 
 type Role = 'user' | 'assistant';
 
@@ -28,22 +28,25 @@ interface History {
   parentMessageId?: string;
 }
 
-export class ChatGPTService {
-  /** API */
+export class Service {
   api?: any;
+  api_key?: string;
+  /** 消息历史 */
   historyList: Map<number, History>;
+  /** 消息队列 */
+  messageQueue: string[];
 
   constructor(
-    /** 日志 */
-    private logger: Logger,
-    /** API key */
-    private api_key?: string,
+    /** 插件 */
+    private plugin: Plugin,
   ) {
+    this.api_key = process.env.OPENAI_API_KEY;
     this.historyList = new Map();
+    this.messageQueue = [];
 
     import('chatgpt').then((module) => {
       if (!this.api_key) {
-        this.logger.warn('你没有添加 api key ，ChatGPT 服务将无法正常使用');
+        this.plugin.logger.warn('你没有添加 api key ，ChatGPT 服务将无法正常使用');
         return;
       }
       const { ChatGPTAPI } = module;
@@ -58,6 +61,8 @@ export class ChatGPTService {
     if (!this.api) {
       throw new Error('你没有添加 api key ，ChatGPT 服务将无法正常使用');
     }
+    this.messageQueue.push(message);
+
     const history: History = this.historyList.get(user_id) ?? {};
     const options: SendMessageOptions = {
       conversationId: history.conversationId,
@@ -71,5 +76,12 @@ export class ChatGPTService {
     this.historyList.set(user_id, history);
 
     return text;
+  }
+
+  /**
+   * 获取消息队列
+   */
+  getMessageQueue(): string[] {
+    return this.messageQueue;
   }
 }
